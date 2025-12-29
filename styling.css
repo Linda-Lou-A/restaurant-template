@@ -1,0 +1,142 @@
+/* Basic Navigation Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background-color: #ffffff; /* We can make this transparent later */
+    border-bottom: 1px solid #eee;
+    font-family: 'Playfair Display', serif; /* Classic restaurant font style */
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    padding: 0 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #c5a059; /* A gold/brass accent color similar to luxury restaurants */
+}
+/* Hero Section Styling */
+.hero {
+    height: 80vh; /* Covers 80% of the screen height */
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1600&q=80');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+}
+
+.hero-content h2 {
+    font-size: 3.5rem;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 1px;
+}
+
+/* The Book Now Button */
+.btn-book {
+    padding: 15px 40px;
+    background-color: #c5a059; /* That gold/brass accent color */
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: background 0.3s ease;
+}
+
+.btn-book:hover {
+    background-color: #a68545; /* Slightly darker on hover */
+}
+/* Booking Page Styling */
+.booking-container {
+    max-width: 600px;
+    margin: 80px auto;
+    padding: 40px;
+    background: #fdfdfd;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border-radius: 4px;
+}
+
+.booking-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.booking-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+input, select, textarea {
+    padding: 12px;
+    border: 1px solid #ddd;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 2px;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 15px;
+    background-color: #333; /* Darker button for the form contrast */
+    color: white;
+    border: none;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: #c5a059; /* Changes to our gold accent on hover */
+}
