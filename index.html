@@ -42,6 +42,93 @@
         <a href="bookings.html" class="btn-book">Book a Table</a>
     </div>
 </section>
+<section class="about-intro">
+    <div class="about-grid">
+        <div class="about-image">
+    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" alt="Vista Restaurante Interior">
+</div>
+        <div class="about-text">
+            <span>Our Story</span>
+            <h2>Authentic Flavors, <br>Unforgettable Views</h2>
+            <p>At Vista Restaurante, we combine the freshest local ingredients with traditional Mediterranean techniques. Whether it's a romantic dinner or a family gathering, we provide an atmosphere that feeds the soul as much as the body.</p>
+            <a href="contact.html" class="link-standard">Learn More</a>
+        </div>
+    </div>
+</section>
 
-    </body>
+<section class="food-preview">
+    <div class="section-title">
+        <span>Discover</span>
+        <h2>Explore Our Menu</h2>
+    </div>
+    
+    <div class="preview-grid">
+        <a href="menu.html" class="preview-item">
+            <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=600&q=80" alt="Starters">
+            <div class="overlay">
+                <h3>Starters</h3>
+            </div>
+        </a>
+        <a href="menu.html" class="preview-item">
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80" alt="Main Courses">
+            <div class="overlay">
+                <h3>Main Courses</h3>
+            </div>
+        </a>
+        <a href="menu.html" class="preview-item">
+            <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=600&q=80" alt="Desserts">
+            <div class="overlay">
+                <h3>Desserts</h3>
+            </div>
+        </a>
+    </div>
+</section>
+<footer class="main-footer">
+    <div class="footer-grid">
+        <div class="footer-col">
+            <h3>Vista Restaurante</h3>
+            <p>Authentic Mediterranean cuisine served with passion and tradition in the heart of the coast.</p>
+             <div class="legal-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms & Conditions</a>
+    </div>
+        </div>
+         <div class="footer-col">
+            <h4>Opening Hours</h4>
+            <p>Mon - Thu: 13:00 - 23:00</p>
+            <p>Fri - Sun: 13:00 - 00:00</p>
+        </div>
+
+       <div class="footer-col">
+    <h4>Contact Us</h4>
+    <p>Calle Mayor 12, Almería, Spain</p>
+    <p>+34 123 456 789</p>
+    </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 Vista Restaurante. Built by Vision Web Design Studio.</p>
+    </div>
+</footer>
+<div id="cookie-banner" class="cookie-banner">
+    <p>We use cookies to ensure you get the best experience on our website. 
+       <a href="privacy.html">Learn more</a>
+    </p>
+    <button id="accept-cookies" class="btn-cookie">Accept</button>
+</div>
+        <script>
+    const banner = document.getElementById('cookie-banner');
+    const btn = document.getElementById('accept-cookies');
+
+    // 1. Check if the user has already accepted cookies in the past
+    if (localStorage.getItem('cookiesAccepted') === 'true') {
+        banner.style.display = 'none';
+    }
+
+    // 2. When they click 'Accept', hide it AND save that choice
+    btn.addEventListener('click', () => {
+        banner.style.display = 'none';
+        localStorage.setItem('cookiesAccepted', 'true');
+    });
+</script>
+</body>
 </html>

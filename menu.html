@@ -35,5 +35,52 @@
     </nav>
 </header>
 <body>
+    <footer class="main-footer">
+    <div class="footer-grid">
+        <div class="footer-col">
+            <h3>Vista Restaurante</h3>
+            <p>Authentic Mediterranean cuisine served with passion and tradition in the heart of the coast.</p>
+             <div class="legal-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms & Conditions</a>
+    </div>
+        </div>
+         <div class="footer-col">
+            <h4>Opening Hours</h4>
+            <p>Mon - Thu: 13:00 - 23:00</p>
+            <p>Fri - Sun: 13:00 - 00:00</p>
+        </div>
+
+       <div class="footer-col">
+    <h4>Contact Us</h4>
+    <p>Calle Mayor 12, Almería, Spain</p>
+    <p>+34 123 456 789</p>
+    </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 Vista Restaurante. Built by Vision Web Design Studio.</p>
+    </div>
+</footer>
+<div id="cookie-banner" class="cookie-banner">
+    <p>We use cookies to ensure you get the best experience on our website. 
+       <a href="privacy.html">Learn more</a>
+    </p>
+    <button id="accept-cookies" class="btn-cookie">Accept</button>
+</div>
+        <script>
+    const banner = document.getElementById('cookie-banner');
+    const btn = document.getElementById('accept-cookies');
+
+    // 1. Check if the user has already accepted cookies in the past
+    if (localStorage.getItem('cookiesAccepted') === 'true') {
+        banner.style.display = 'none';
+    }
+
+    // 2. When they click 'Accept', hide it AND save that choice
+    btn.addEventListener('click', () => {
+        banner.style.display = 'none';
+        localStorage.setItem('cookiesAccepted', 'true');
+    });
+</script>
     </body>
 </html>

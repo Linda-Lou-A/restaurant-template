@@ -1,17 +1,26 @@
-/* Basic Navigation Styling */
+/* --- 1. GENERAL & NAVIGATION --- */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+}
+
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 5%;
-    background-color: #ffffff; /* We can make this transparent later */
+    background-color: #ffffff;
     border-bottom: 1px solid #eee;
-    font-family: 'Playfair Display', serif; /* Classic restaurant font style */
+    font-family: 'Playfair Display', serif;
 }
 
 .nav-links {
     display: flex;
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-links li {
@@ -28,11 +37,13 @@
 }
 
 .nav-links a:hover {
-    color: #c5a059; /* A gold/brass accent color similar to luxury restaurants */
+    color: #c5a059;
 }
-/* Hero Section Styling */
+
+/* --- 2. HERO SECTIONS --- */
+/* Index Hero */
 .hero {
-    height: 80vh; /* Covers 80% of the screen height */
+    height: 80vh;
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
                 url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1600&q=80');
     background-size: cover;
@@ -44,7 +55,20 @@
     color: #fff;
 }
 
-.hero-content h2 {
+/* Booking Page Hero */
+.booking-hero {
+    height: 300px;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1200&q=80');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.hero-content h2, .booking-hero h1 {
     font-size: 3.5rem;
     font-family: 'Playfair Display', serif;
     margin-bottom: 1rem;
@@ -53,90 +77,311 @@
 .hero-content p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
-    font-family: 'Poppins', sans-serif;
     letter-spacing: 1px;
 }
 
-/* The Book Now Button */
-.btn-book {
-    padding: 15px 40px;
-    background-color: #c5a059; /* That gold/brass accent color */
-    color: #fff;
-    text-decoration: none;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    text-transform: uppercase;
-    border-radius: 2px;
-    transition: background 0.3s ease;
+/* --- 3. INDEX PAGE CONTENT --- */
+/* About Section */
+.about-intro {
+    padding: 60px 10%;
+    background-color: #fff;
 }
 
-.btn-book:hover {
-    background-color: #a68545; /* Slightly darker on hover */
-}
-/* Booking Page Styling */
-.booking-container {
-    max-width: 600px;
-    margin: 80px auto;
-    padding: 40px;
-    background: #fdfdfd;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    border-radius: 4px;
-}
-
-.booking-header {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.booking-header h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    color: #333;
-}
-
-.form-group {
-    margin-bottom: 20px;
+.about-grid {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    gap: 60px;
 }
 
-.form-row {
-    display: flex;
-    gap: 20px;
-}
-
-.form-row .form-group {
+.about-image, .about-text {
     flex: 1;
 }
 
-label {
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.9rem;
-    margin-bottom: 8px;
-    color: #666;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-input, select, textarea {
-    padding: 12px;
-    border: 1px solid #ddd;
-    font-family: 'Poppins', sans-serif;
-    border-radius: 2px;
-}
-
-.btn-submit {
+.about-image img {
     width: 100%;
-    padding: 15px;
-    background-color: #333; /* Darker button for the form contrast */
-    color: white;
-    border: none;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.about-text span {
+    color: #c5a059;
     text-transform: uppercase;
+    letter-spacing: 2px;
     font-weight: 600;
+}
+
+.about-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    margin: 15px 0;
+    line-height: 1.2;
+}
+
+.about-text p {
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+/* Food Preview Grid */
+.food-preview {
+    padding: 40px 5%;
+    background-color: #f9f9f9;
+}
+
+.section-title span {
+    color: #c5a059;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.section-title h2 {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+}
+
+.preview-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.preview-item {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+    display: block;
+}
+
+.preview-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.3s;
+}
+
+.overlay h3 {
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+.preview-item:hover img { transform: scale(1.1); }
+.preview-item:hover .overlay { background: rgba(197, 160, 89, 0.6); }
+
+/* --- 4. BOOKING PAGE (DARK FORM) --- */
+.booking-layout {
+    padding: 80px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.container-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.booking-sidebar { flex: 1; padding-top: 40px; }
+.left { text-align: left; }
+.right { text-align: right; }
+
+.booking-sidebar h3 {
+    color: #c5a059;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+}
+
+.time-block { margin-bottom: 30px; }
+.time-block h4 { font-size: 1rem; margin-bottom: 5px; color: #333; }
+
+.booking-form-wrapper { flex: 2; }
+
+.dark-form {
+    background-color: #111; /* Midnight Black */
+    padding: 50px;
+    color: white;
+    border-radius: 4px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.dark-form h2 {
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #c5a059;
+}
+
+.dark-form label {
+    color: #eee;
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    display: block;
+}
+
+.dark-form input, .dark-form textarea, .dark-form select {
+    width: 100%;
+    background: #222;
+    border: 1px solid #444;
+    color: white;
+    padding: 12px;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+/* --- 5. BUTTONS & LINKS --- */
+.btn-book, .btn-gold, .btn-submit {
+    display: inline-block;
+    padding: 15px 40px;
+    background-color: #c5a059;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: none;
     cursor: pointer;
     transition: background 0.3s;
 }
 
-.btn-submit:hover {
-    background-color: #c5a059; /* Changes to our gold accent on hover */
+.btn-gold { width: 100%; } /* Specific to Booking Form */
+
+.btn-book:hover, .btn-gold:hover {
+    background-color: #a68545;
+}
+
+.link-standard {
+    display: inline-block;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 2px;
+    color: #333;
+    position: relative;
+    padding-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+.link-standard::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #c5a059;
+    transition: width 0.3s ease;
+}
+
+/* --- 6. FOOTER & LEGAL --- */
+.main-footer {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 60px 10% 20px;
+    margin-top: 60px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-col h3, .footer-col h4 {
+    font-family: 'Playfair Display', serif;
+    color: #c5a059;
+    margin-bottom: 20px;
+}
+
+.footer-col p {
+    font-size: 0.9rem;
+    color: #bbb;
+    line-height: 1.6;
+}
+
+.legal-links {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.legal-links a {
+    color: #777;
+    font-size: 0.8rem;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.legal-links a:hover { color: #c5a059; }
+
+.legal-links a:not(:last-child)::after {
+    content: "|";
+    margin-left: 20px;
+    color: #444;
+}
+
+.footer-bottom {
+    border-top: 1px solid #333;
+    padding-top: 20px;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #777;
+}
+
+/* --- 7. COOKIE BANNER --- */
+.cookie-banner {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    background: #fff;
+    color: #333;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+    border-left: 5px solid #c5a059;
+    z-index: 1000;
+    border-radius: 4px;
+}
+
+.btn-cookie {
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 25px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+/* --- 8. RESPONSIVE --- */
+@media (max-width: 900px) {
+    .container-flex { flex-direction: column; align-items: center; text-align: center; }
+    .about-grid { flex-direction: column; }
+    .preview-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .left, .right { text-align: center; }
 }
