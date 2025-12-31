@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vista Restaurante | Home</title>
+    <title>Vista Restaurante | Bookings</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -19,6 +19,7 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="menu.html">Our Menu</a></li>
             <li><a href="bookings.html">Bookings</a></li>
+            <li><a href="events.html">Events</a></li>
             <li><a href="gallery.html">Image Gallery</a></li>
             <li><a href="contact.html">Contact Us</a></li>
         </ul>
@@ -35,107 +36,189 @@
     </nav>
 </header>
 <body>
-   <section class="booking-hero">
-    <h1>Reservations</h1>
-</section>
+    <section class="booking-hero">
+        <h1>Reservations</h1>
+    </section>
 
-<section class="booking-layout">
-    <div class="container-flex">
+    <section class="booking-layout">
+        <div class="container-flex">
+            
+            <div class="booking-sidebar left">
+                <h3>Our Location</h3>
+                <p>Calle Mayor 12,<br>04001 Almería, Spain</p>
+                <p><strong>Phone:</strong> +34 123 456 789</p>
+                <p><strong>Email:</strong> info@vista.com</p>
+            </div>
+
+           <div class="booking-form-wrapper">
+    <form id="my-form" action="https://formspree.io/f/xbdjqggw" method="POST" class="dark-form">
+        <h2>Book a Table</h2>
         
-        <div class="booking-sidebar left">
-            <h3>Our Location</h3>
-            <p>Calle Mayor 12,<br>04001 Almería, Spain</p>
-            <p><strong>Phone:</strong> +34 123 456 789</p>
-            <p><strong>Email:</strong> info@vista.com</p>
+        <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" name="name" required>
         </div>
 
-        <div class="booking-form-wrapper">
-            <form action="https://formspree.io/f/xbdjqggw" method="POST" class="dark-form">
-                <h2>Book a Table</h2>
-                <div class="form-group">
-                    <label>Full Name</label>
-                    <input type="text" name="name" required>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Date</label>
-                        <input type="date" name="date" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Guests</label>
-                        <input type="number" name="guests" value="2">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>Special Requests</label>
-                    <textarea name="message" rows="3"></textarea>
-                </div>
-                <button type="submit" class="btn-gold">Request Booking</button>
-            </form>
-        </div>
-
-        <div class="booking-sidebar right">
-            <h3>Opening Hours</h3>
-            <div class="time-block">
-                <h4>Lunch</h4>
-                <p>Mon - Sun</p>
-                <p>13:00 - 15:30</p>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="date">Date</label>
+                <input type="date" name="date" id="booking-date" required>
             </div>
-            <div class="time-block">
-                <h4>Dinner</h4>
-                <p>Mon - Sun</p>
-                <p>18:00 - 22:30</p>
+            <div class="form-group">
+                <label for="time">Time</label>
+                <select name="time" id="booking-time" required>
+                    <option value="" disabled selected>Select a time</option>
+                    <optgroup label="Lunch">
+                        <option value="13:00">13:00</option>
+                        <option value="13:30">13:30</option>
+                        <option value="14:00">14:00</option>
+                        <option value="14:30">14:30</option>
+                        <option value="15:00">15:00</option>
+                    </optgroup>
+                    <optgroup label="Dinner">
+                        <option value="18:00">18:00</option>
+                        <option value="18:30">18:30</option>
+                        <option value="19:00">19:00</option>
+                        <option value="19:30">19:30</option>
+                        <option value="20:00">20:00</option>
+                        <option value="20:30">20:30</option>
+                        <option value="21:00">21:00</option>
+                        <option value="21:30">21:30</option>
+                        <option value="22:00">22:00</option>
+                    </optgroup>
+                </select>
             </div>
         </div>
 
-    </div>
-</section>
-<footer class="main-footer">
-    <div class="footer-grid">
-        <div class="footer-col">
-            <h3>Vista Restaurante</h3>
-            <p>Authentic Mediterranean cuisine served with passion and tradition in the heart of the coast.</p>
-             <div class="legal-links">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms & Conditions</a>
-    </div>
-        </div>
-         <div class="footer-col">
-            <h4>Opening Hours</h4>
-            <p>Mon - Thu: 13:00 - 23:00</p>
-            <p>Fri - Sun: 13:00 - 00:00</p>
+        <div class="form-group">
+            <label>Guests</label>
+            <input type="number" name="guests" value="2" min="1">
         </div>
 
-       <div class="footer-col">
-    <h4>Contact Us</h4>
-    <p>Calle Mayor 12, Almería, Spain</p>
-    <p>+34 123 456 789</p>
+        <div class="form-group">
+            <label>Special Requests</label>
+            <textarea name="message" rows="3" placeholder="Allergies, special occasions, etc."></textarea>
+        </div>
+
+        <button type="submit" class="btn-gold">Request Booking</button>
+    </form>
+
+    <div id="status" class="status-message">
+        <h3>Thank You!</h3>
+        <p>Your booking request has been sent successfully. We will contact you shortly to confirm your table.</p>
+        <button onclick="window.location.reload()" class="btn-gold" style="width: auto; margin-top: 20px;">Make another booking</button>
     </div>
-    </div>
-    <div class="footer-bottom">
-        <p>&copy; 2025 Vista Restaurante. Built by Vision Web Design Studio.</p>
-    </div>
-</footer>
-<div id="cookie-banner" class="cookie-banner">
-    <p>We use cookies to ensure you get the best experience on our website. 
-       <a href="privacy.html">Learn more</a>
-    </p>
-    <button id="accept-cookies" class="btn-cookie">Accept</button>
 </div>
-        <script>
-    const banner = document.getElementById('cookie-banner');
-    const btn = document.getElementById('accept-cookies');
 
-    // 1. Check if the user has already accepted cookies in the past
-    if (localStorage.getItem('cookiesAccepted') === 'true') {
-        banner.style.display = 'none';
+            <div class="booking-sidebar right">
+                <h3>Opening Hours</h3>
+                <div class="time-block">
+                    <h4>Lunch</h4>
+                    <p>Mon - Sun</p>
+                    <p>13:00 - 15:30</p>
+                </div>
+                <div class="time-block">
+                    <h4>Dinner</h4>
+                    <p>Mon - Sun</p>
+                    <p>18:00 - 22:30</p>
+                </div>
+            </div>
+
+        </div> </section>
+
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>Vista Restaurante</h3>
+                <p>Authentic Mediterranean cuisine served with passion and tradition in the heart of the coast.</p>
+                <div class="legal-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms & Conditions</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Opening Hours</h4>
+                <p>Mon - Thu: 13:00 - 23:00</p>
+                <p>Fri - Sun: 13:00 - 00:00</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <p>Calle Mayor 12, Almería, Spain</p>
+                <p>+34 123 456 789</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Vista Restaurante. Built by Vision Web Design Studio.</p>
+        </div>
+    </footer>
+
+    <div id="cookie-banner" class="cookie-banner">
+        <p>We use cookies to ensure you get the best experience on our website. 
+           <a href="privacy.html">Learn more</a>
+        </p>
+        <button id="accept-cookies" class="btn-cookie">Accept</button>
+    </div>
+
+    <script>
+        // Cookie Logic
+        const banner = document.getElementById('cookie-banner');
+        const btn = document.getElementById('accept-cookies');
+        if (localStorage.getItem('cookiesAccepted') === 'true') {
+            banner.style.display = 'none';
+        }
+        btn.addEventListener('click', () => {
+            banner.style.display = 'none';
+            localStorage.setItem('cookiesAccepted', 'true');
+        });
+
+        // Date Picker Logic
+        const today = new Date();
+        const dd = String(today.getDate()).padStart(2, '0');
+        const mm = String(today.getMonth() + 1).padStart(2, '0'); 
+        const yyyy = today.getFullYear();
+        const minDate = yyyy + '-' + mm + '-' + dd;
+
+        const future = new Date();
+        future.setDate(today.getDate() + 30);
+        const f_dd = String(future.getDate()).padStart(2, '0');
+        const f_mm = String(future.getMonth() + 1).padStart(2, '0');
+        const f_yyyy = future.getFullYear();
+        const maxDate = f_yyyy + '-' + f_mm + '-' + f_dd;
+
+        const datePicker = document.getElementById('booking-date');
+        datePicker.min = minDate;
+        datePicker.max = maxDate;
+    </script>
+    <script>
+    var form = document.getElementById("my-form");
+    
+    async function handleSubmit(event) {
+      event.preventDefault(); // This stops the page from redirecting to Formspree
+      var status = document.getElementById("status");
+      var data = new FormData(event.target);
+      
+      fetch(event.target.action, {
+        method: form.method,
+        body: data,
+        headers: {
+            'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          // Success! Hide the form and show the message
+          form.style.display = "none";
+          status.classList.add("success");
+        } else {
+          // If there's an error from Formspree
+          alert("Oops! There was a problem submitting your form. Please check your details.");
+        }
+      }).catch(error => {
+        // If there's a connection error
+        alert("Oops! There was a problem connecting to the server.");
+      });
     }
-
-    // 2. When they click 'Accept', hide it AND save that choice
-    btn.addEventListener('click', () => {
-        banner.style.display = 'none';
-        localStorage.setItem('cookiesAccepted', 'true');
-    });
+    
+    form.addEventListener("submit", handleSubmit);
 </script>
-    </body>
+</body>
 </html>

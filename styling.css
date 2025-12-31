@@ -1,19 +1,28 @@
 /* --- 1. GENERAL & NAVIGATION --- */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Adjust this number to match your navbar height */
+}
 body {
     margin: 0;
-    padding: 0;
+    padding-top: 80;
     font-family: 'Poppins', sans-serif;
     color: #333;
 }
 
 .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;              /* We force a height */
+    background-color: #ffffff; /* Solid black so images don't bleed through */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 5%;
-    background-color: #ffffff;
-    border-bottom: 1px solid #eee;
-    font-family: 'Playfair Display', serif;
+    padding: 0 5%;             /* Removed top/bottom padding to use height instead */
+    z-index: 10000;            /* Extremely high to stay on top */
+    box-sizing: border-box;    /* Keeps the width perfect */
 }
 
 .nav-links {
@@ -200,8 +209,8 @@ body {
 }
 
 .booking-sidebar { flex: 1; padding-top: 40px; }
-.left { text-align: left; }
-.right { text-align: right; }
+.left { text-align: center; }
+.right { text-align: center; }
 
 .booking-sidebar h3 {
     color: #c5a059;
@@ -209,7 +218,7 @@ body {
     margin-bottom: 20px;
     text-transform: uppercase;
     font-size: 1.2rem;
-}
+   }
 
 .time-block { margin-bottom: 30px; }
 .time-block h4 { font-size: 1rem; margin-bottom: 5px; color: #333; }
@@ -234,7 +243,8 @@ body {
 .dark-form label {
     color: #eee;
     font-size: 0.8rem;
-    margin-bottom: 8px;
+   
+    margin-top: 8px;
     text-transform: uppercase;
     display: block;
 }
@@ -248,7 +258,53 @@ body {
     margin-top: 5px;
     box-sizing: border-box;
 }
+.dark-form select {
+    width: 100%;
+    background: #222;
+    border: 1px solid #444;
+    color: white;
+    padding: 12px;
+    margin-top: 5px;
+    appearance: none; /* Removes default browser styling for a cleaner look */
+}
 
+/* This ensures the options (the text inside the dropdown) are readable */
+.dark-form select option {
+    background: #111;
+    color: white;
+}
+/* Styling the Date and Select inputs for better visibility */
+.dark-form input[type="date"], 
+.dark-form select {
+    border: 1px solid #444;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    color: #c5a059; /* Makes the text gold */
+    font-weight: 600;
+}
+
+/* Add a gold glow when the user clicks into the field */
+.dark-form input[type="date"]:focus, 
+.dark-form select:focus {
+    outline: none;
+    border-color: #c5a059;
+    box-shadow: 0 0 10px rgba(197, 160, 89, 0.3);
+}
+
+/* Styling the calendar icon (for Chrome/Edge/Safari) */
+.dark-form input::-webkit-calendar-picker-indicator {
+    filter: invert(72%) sepia(21%) saturate(945%) hue-rotate(352deg) brightness(88%) contrast(85%);
+    cursor: pointer;
+    padding: 5px;
+}
+
+/* Adding a hover effect to make it obvious it's clickable */
+.dark-form input[type="date"]:hover, 
+.dark-form select:hover {
+    background: #2a2a2a;
+    border-color: #c5a059;
+}
 /* --- 5. BUTTONS & LINKS --- */
 .btn-book, .btn-gold, .btn-submit {
     display: inline-block;
@@ -384,4 +440,486 @@ body {
     .preview-grid { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr; }
     .left, .right { text-align: center; }
+}
+/* --- MENU PAGE STYLING --- */
+
+.menu-container {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.menu-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.menu-header span {
+    color: #c5a059;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+.menu-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    margin-top: 10px;
+}
+
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 30px;
+    /* This creates the classic dotted line between dish and price */
+    border-bottom: 1px dotted #ccc; 
+    padding-bottom: 10px;
+}
+
+.item-info {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.item-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+    color: #222;
+}
+
+.item-info p {
+    font-size: 0.9rem;
+    color: #777;
+    font-style: italic;
+    margin: 0;
+}
+
+.price {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: #c5a059;
+    font-size: 1.1rem;
+    white-space: nowrap; /* Keeps price on one line */
+}
+
+/* Responsive adjustment for small phones */
+@media (max-width: 480px) {
+    .menu-item {
+        flex-direction: column;
+        border-bottom: 1px solid #eee;
+    }
+    .price {
+        margin-top: 5px;
+        display: block;
+    }
+}
+/* Full-width image dividers for the menu */
+.menu-divider-img {
+    height: 300px;
+    width: 100%;
+    background-attachment: fixed; /* This creates the parallax scroll effect */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 40px 0;
+}
+
+/* Image for Starters (Tapas/Appetizers) */
+.starters-bg {
+    background-image: url('https://images.unsplash.com/photo-1541529086526-db283c563270?auto=format&fit=crop&w=1200&q=80');
+}
+
+/* Image for Mains (Grilled Fish/Meat) */
+.mains-bg {
+    background-image: url('https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1200&q=80');
+}
+
+/* Image for Desserts */
+.desserts-bg {
+    background-image: url('https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=1200&q=80');
+}
+
+/* Tablet/Mobile fix: Parallax (fixed attachment) often breaks on phones, 
+   so we turn it off for smaller screens */
+@media (max-width: 768px) {
+    .menu-divider-img {
+        background-attachment: scroll;
+        height: 200px;
+    }
+}
+.status-message {
+    display: none; /* Hidden by default */
+    background: #111;
+    color: white;
+    padding: 40px;
+    text-align: center;
+    border: 1px solid #c5a059;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
+.status-message h3 {
+    color: #c5a059;
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.status-message.success {
+    display: block;
+}
+/* Gallery Hero */
+.gallery-hero {
+    padding: 100px 5%;
+    background-color: #111;
+    color: white;
+    text-align: center;
+}
+
+.gallery-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    color: #c5a059;
+}
+
+/* The Grid System */
+.gallery-section {
+    padding: 60px 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-auto-rows: 300px;
+    grid-auto-flow: dense; /* Fills in gaps automatically */
+    gap: 15px;
+}
+
+.gallery-item {
+    overflow: hidden;
+    position: relative;
+    border-radius: 4px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+    cursor: pointer;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+/* Masonry Layout Rules */
+.wide { grid-column: span 2; }
+.tall { grid-row: span 2; }
+
+/* Mobile View: Everything becomes a single column */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 250px;
+    }
+    .wide, .tall {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+}
+.gallery-item::after {
+    content: '🔍 View';
+    position: absolute;
+    inset: 0;
+    background: rgba(197, 160, 89, 0.4);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-weight: 600;
+    pointer-events: none;
+}
+
+.gallery-item:hover::after {
+    opacity: 1;
+}
+.contact-container {
+    padding: 80px 10%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact-grid {
+    display: flex;
+    gap: 60px;
+}
+
+.contact-info, .contact-form-box {
+    flex: 1;
+}
+
+.contact-info span {
+    color: #c5a059;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.contact-info h2, .contact-form-box h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.info-item {
+    margin-bottom: 20px;
+}
+
+.map-placeholder {
+    margin-top: 30px;
+    border: 1px solid #eee;
+}
+
+.contact-form-box input, .contact-form-box textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+}
+
+/* Mobile Fix */
+@media (max-width: 768px) {
+    .contact-grid { flex-direction: column; }
+}
+/* Dish Strip Styling */
+.dish-strip {
+    display: flex;
+    width: 100%;
+    overflow: hidden; /* Keeps it clean */
+}
+
+.dish-item {
+    flex: 1; /* Each image takes equal space */
+    height: 300px; /* Square feel on desktop */
+}
+
+.dish-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+/* Optional hover effect to make it interactive */
+.dish-item:hover img {
+    transform: scale(1.05);
+}
+
+/* Mobile Responsive Version */
+@media (max-width: 768px) {
+    .dish-strip {
+        flex-direction: column; /* Stacks images vertically */
+    }
+    
+    .dish-item {
+        height: 250px; /* Adjust height for mobile scrolling */
+    }
+}
+.dishes-section {
+    padding-top: 80px; /* Space above the "Our Dishes" title */
+    background-color: #fff; /* Or #f9f9f9 if you want a slight contrast */
+}
+
+/* Ensure the title has space before the images start */
+.dishes-section .menu-header {
+    margin-bottom: 40px;
+}
+.split-cta {
+    display: flex;
+    height: 600px; /* Large square feel */
+    width: 100%;
+    margin-top: 80px;
+}
+
+.cta-card {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    transition: all 0.5s ease;
+}
+
+/* Background Images */
+.contact-card {
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                      url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=80');
+}
+
+.booking-card {
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                      url('https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?auto=format&fit=crop&w=1000&q=80');
+}
+
+/* Hover Effect: Brighten the image and lift the card slightly */
+.cta-card:hover {
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                      url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=80');
+}
+
+.booking-card:hover {
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                      url('https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?auto=format&fit=crop&w=1000&q=80');
+}
+
+.cta-content span {
+    color: #c5a059;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+}
+
+.cta-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin: 15px 0;
+}
+
+.btn-outline {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 30px;
+    border: 1px solid #c5a059;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-outline:hover {
+    background: #c5a059;
+    color: #111;
+}
+
+/* Mobile: Stack them vertically */
+@media (max-width: 768px) {
+    .split-cta {
+        flex-direction: column;
+        height: auto;
+        margin-top: 50px;
+    }
+    .cta-card {
+        height: 400px;
+    }
+}
+.legal-container {
+    max-width: 800px;
+    margin: 100px auto;
+    padding: 0 20px;
+    line-height: 1.6;
+}
+
+.legal-container h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.last-updated {
+    color: #777;
+    font-size: 0.9rem;
+    margin-bottom: 40px;
+    font-style: italic;
+}
+
+.legal-content h3 {
+    margin-top: 30px;
+    color: #c5a059;
+    font-family: 'Poppins', sans-serif;
+}
+
+.legal-content p, .legal-content ul {
+    margin-bottom: 20px;
+    color: #444;
+}
+
+.legal-content ul {
+    padding-left: 20px;
+}
+/* Events Styling */
+.events-hero {
+    padding: 100px 5% 60px;
+    text-align: center;
+    background: #fdfdfd;
+}
+
+.events-list {
+    max-width: 1000px;
+    margin: 0 auto 100px;
+    padding: 0 20px;
+}
+
+.event-card {
+    display: flex;
+    gap: 30px;
+    background: white;
+    margin-bottom: 40px;
+    border: 1px solid #eee;
+    padding: 20px;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.event-date {
+    background: #c5a059;
+    color: white;
+    min-width: 80px;
+    padding: 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.event-date .day { font-size: 1.8rem; font-weight: 700; }
+.event-date .month { font-size: 0.9rem; letter-spacing: 2px; }
+
+.event-image { width: 300px; height: 200px; overflow: hidden; }
+.event-image img { width: 100%; height: 100%; object-fit: cover; }
+
+.event-info { flex: 1; }
+.event-tag { color: #c5a059; text-transform: uppercase; font-size: 0.8rem; font-weight: 600; }
+.event-info h2 { font-family: 'Playfair Display', serif; margin: 10px 0; }
+.event-time { color: #777; margin: 10px 0; font-size: 0.9rem; }
+
+.btn-gold-small {
+    display: inline-block;
+    padding: 8px 20px;
+    background: #c5a059;
+    color: white;
+    text-decoration: none;
+    font-size: 0.8rem;
+    margin-top: 10px;
+}
+
+/* Mobile: Stack everything */
+@media (max-width: 768px) {
+    .event-card { flex-direction: column; text-align: center; }
+    .event-image { width: 100%; }
 }
