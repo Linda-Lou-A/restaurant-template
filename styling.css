@@ -858,68 +858,93 @@ body {
 .legal-content ul {
     padding-left: 20px;
 }
-/* Events Styling */
-.events-hero {
-    padding: 100px 5% 60px;
-    text-align: center;
-    background: #fdfdfd;
-}
-
+/* Container for all events */
 .events-list {
     max-width: 1000px;
-    margin: 0 auto 100px;
+    margin: 60px auto;      /* Centered on the page */
     padding: 0 20px;
+    display: flex;
+    flex-direction: column; /* Stack vertically */
+    align-items: center;    /* Center the children */
+    gap: 40px;              /* Space between cards */
 }
 
+/* Individual Event Card */
 .event-card {
     display: flex;
-    gap: 30px;
-    background: white;
-    margin-bottom: 40px;
+    flex-direction: row;    /* Content inside card goes left to right */
+    width: 100%;            /* Force full width of the container */
+    max-width: 900px;
+    background: #fff;
     border: 1px solid #eee;
     padding: 20px;
-    align-items: center;
-    transition: transform 0.3s ease;
+    gap: 30px;              /* Gap between Date, Image, and Info */
+    align-items: center;    /* Vertically centers items inside the card */
+    box-sizing: border-box; /* Crucial for alignment */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
-.event-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-}
-
+/* Date Box */
 .event-date {
     background: #c5a059;
     color: white;
-    min-width: 80px;
-    padding: 15px;
-    text-align: center;
+    min-width: 90px;        /* Fixed width so cards don't jump */
+    height: 90px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
-.event-date .day { font-size: 1.8rem; font-weight: 700; }
-.event-date .month { font-size: 0.9rem; letter-spacing: 2px; }
+/* Image container */
+.event-image {
+    width: 250px;           /* Fixed width for consistency */
+    height: 160px;
+    overflow: hidden;
+    flex-shrink: 0;         /* Prevents the image from squishing */
+}
 
-.event-image { width: 300px; height: 200px; overflow: hidden; }
-.event-image img { width: 100%; height: 100%; object-fit: cover; }
+.event-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
-.event-info { flex: 1; }
-.event-tag { color: #c5a059; text-transform: uppercase; font-size: 0.8rem; font-weight: 600; }
-.event-info h2 { font-family: 'Playfair Display', serif; margin: 10px 0; }
-.event-time { color: #777; margin: 10px 0; font-size: 0.9rem; }
+/* Info section takes up remaining space */
+.event-info {
+    flex-grow: 1;
+}
 
+/* Mobile Fix: Stack elements inside the card on small screens */
+@media (max-width: 768px) {
+    .event-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    .event-image {
+        width: 100%;
+    }
+}
 .btn-gold-small {
     display: inline-block;
-    padding: 8px 20px;
-    background: #c5a059;
-    color: white;
+    padding: 10px 25px;
+    background-color: #c5a059; /* Your signature gold */
+    color: #ffffff !important;   /* White text */
     text-decoration: none;
-    font-size: 0.8rem;
-    margin-top: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1px solid #c5a059;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+    cursor: pointer;
 }
 
-/* Mobile: Stack everything */
-@media (max-width: 768px) {
-    .event-card { flex-direction: column; text-align: center; }
-    .event-image { width: 100%; }
+.btn-gold-small:hover {
+    background-color: transparent;
+    color: #c5a059 !important; /* Text turns gold */
+    box-shadow: 0 5px 15px rgba(197, 160, 89, 0.2);
+    transform: translateY(-2px); /* Slight lift effect */
 }
