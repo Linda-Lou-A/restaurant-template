@@ -948,3 +948,37 @@ body {
     box-shadow: 0 5px 15px rgba(197, 160, 89, 0.2);
     transform: translateY(-2px); /* Slight lift effect */
 }
+.cookie-banner p a {
+    color: #c5a059; /* Your signature gold */
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s ease;
+    margin-left: 5px;
+}
+
+.cookie-banner p a:hover {
+    border-bottom: 1px solid #c5a059; /* Elegant underline on hover */
+    opacity: 0.8;
+}
+.lang-switch {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    color: #666;
+}
+
+.lang-switch a {
+    text-decoration: none;
+    color: #222; /* Darker for the main text */
+    font-weight: 400;
+    transition: color 0.3s ease;
+    padding: 0 5px;
+}
+
+/* Style for the active language or hover */
+.lang-switch a:hover, 
+.lang-switch a.active {
+    color: #c5a059; /* Gold when hovered or active */
+    font-weight: 600;
+}
