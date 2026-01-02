@@ -20,7 +20,7 @@
             <li><a href="menu.html">Our Menu</a></li>
             <li><a href="bookings.html">Bookings</a></li>
             <li><a href="events.html">Events</a></li>
-            <li><a href="gallery.html">Image Gallery</a></li>
+            <li><a href="gallery.html" class="active">Image Gallery</a></li>
             <li><a href="contact.html">Contact Us</a></li>
         </ul>
 
@@ -160,6 +160,16 @@
         banner.style.display = 'none';
         localStorage.setItem('cookiesAccepted', 'true');
     });
+</script>
+<script>
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+const langSwitch = document.querySelector('.lang-switch');
+
+hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    langSwitch.classList.toggle('active');
+});
 </script>
     </body>
 </html>

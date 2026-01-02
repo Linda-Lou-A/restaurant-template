@@ -16,7 +16,7 @@
         </div>
         
         <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
+           <li><a href="index.html" class="active">Home</a></li>
             <li><a href="menu.html">Our Menu</a></li>
             <li><a href="bookings.html">Bookings</a></li>
             <li><a href="events.html">Events</a></li>
@@ -134,6 +134,16 @@
         banner.style.display = 'none';
         localStorage.setItem('cookiesAccepted', 'true');
     });
+</script>
+<script>
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+const langSwitch = document.querySelector('.lang-switch');
+
+hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    langSwitch.classList.toggle('active');
+});
 </script>
 </body>
 </html>

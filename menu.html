@@ -17,7 +17,7 @@
         
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
-            <li><a href="menu.html">Our Menu</a></li>
+            <li><a href="menu.html" class="active">Our Menu</a></li>
             <li><a href="bookings.html">Bookings</a></li>
             <li><a href="events.html">Events</a></li>
             <li><a href="gallery.html">Image Gallery</a></li>
@@ -38,14 +38,11 @@
     </nav>
 </header>
 <body>
-    <section class="menu-container">
-    <section id="starters" class="menu-container">
+   <section id="starters" class="menu-container">
     <div class="menu-header">
         <span>Selection</span>
         <h2>Our Starters</h2>
     </div>
-    </section>
-
 
     <div class="menu-grid">
         <div class="menu-item">
@@ -73,13 +70,14 @@
         </div>
     </div>
 </section>
+
 <div class="menu-divider-img starters-bg"></div>
-    <section id="mains" class="menu-container">
+
+<section id="mains" class="menu-container">
     <div class="menu-header">
         <span>Signature</span>
         <h2>Main Courses</h2>
     </div>
-    </section>
 
     <div class="menu-grid">
         <div class="menu-item">
@@ -107,6 +105,7 @@
         </div>
     </div>
 </section>
+
 <div class="menu-divider-img mains-bg"></div>
 
 <section id="desserts" class="menu-container">
@@ -114,7 +113,6 @@
         <span>Sweet Ending</span>
         <h2>Desserts</h2>
     </div>
-    </section>
 
     <div class="menu-grid">
         <div class="menu-item">
@@ -134,6 +132,7 @@
         </div>
     </div>
 </section>
+
 <div class="menu-divider-img desserts-bg"></div>
     <footer class="main-footer">
     <div class="footer-grid">
@@ -181,6 +180,16 @@
         banner.style.display = 'none';
         localStorage.setItem('cookiesAccepted', 'true');
     });
+</script>
+<script>
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+const langSwitch = document.querySelector('.lang-switch');
+
+hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    langSwitch.classList.toggle('active');
+});
 </script>
     </body>
 </html>
