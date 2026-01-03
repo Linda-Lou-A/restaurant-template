@@ -89,55 +89,27 @@ body {
     margin-bottom: 2rem;
     letter-spacing: 1px;
 }
-@media (max-width: 768px) {
-    /* Stack both the links and lang switch in the dropdown */
-    .nav-links, .lang-switch {
-        display: none; 
+@media (max-width: 1281px) {
+    /* 1. Header Layout - Stacking the Actions */
+    .navbar {
+        padding: 10px 5%;
+        position: relative;
+    }
+
+    .nav-actions {
+        display: flex;
         flex-direction: column;
-        position: absolute;
-        top: 100%; /* Sits right at the bottom of the header */
-        left: 0;
-        width: 100%;
-        background: #fff;
-        padding: 20px 0;
-        text-align: center;
-        z-index: 1000;
-        box-shadow: 0 5px 10px rgba(0,0,0,0.05);
-    }
-/* Position the Lang Switch at the very bottom of the open menu */
-    .lang-switch {
-        padding-top: 10px;
-        border-top: 1px solid #eee;
-        margin-top: 0; 
-    }
-    /* Hide the "|" separator on mobile since they are stacked */
-    .lang-switch span {
-        display: none; 
+        align-items: center;
+        gap: 5px; /* Tight gap between Burger and EN-ES */
     }
 
-    /* Show them when menu is active */
-    .nav-links.active {
-        display: flex;
-    }
-    
-    .lang-switch.active {
-        display: flex;
-        position: relative; /* Removes the absolute overlap */
-        top: 0;
-    }
-/* THE GOLD HIGHLIGHT for the current page */
-    .nav-links a.active, 
-    .lang-switch a.active {
-        color: #c5a059 !important;
-        font-weight: 600;
-    }
-
-    /* Make the Hamburger icon visible */
+    /* 2. Hamburger Styling */
     .hamburger {
         display: flex;
         flex-direction: column;
         gap: 5px;
         cursor: pointer;
+        margin: 0;
     }
 
     .hamburger span {
@@ -146,51 +118,101 @@ body {
         background: #222;
         transition: 0.3s;
     }
+/* 3. Language Switch - ALWAYS VISIBLE now */
+    .lang-switch {
+        display: flex !important; 
+        flex-direction: row; 
+        position: static; 
+        width: auto;
+        background: none;
+        padding: 0;
+        box-shadow: none;
+        font-size: 0.85rem; /* Slightly larger for readability */
+        border-top: none;
+        margin-top: 0;
+        gap: 8px; /* Space around the separator */
+        align-items: center;
+    }
+
+    /* Show the | separator specifically for this view */
+    .lang-sep {
+        display: inline !important; 
+        color: #000000;
+        font-weight: 300;
+    }
+
+    /* Remove the dash we added earlier */
+    .lang-switch a:first-child::after {
+        content: "" !important;
+    }
+    /* 3. Language Switch - ALWAYS VISIBLE now */
+       
+       /* 4. Navigation Menu (The Drawer) */
+    .nav-links {
+        display: none; 
+        flex-direction: column;
+        position: absolute;
+        top: 100%; 
+        left: 0;
+        width: 100%;
+        background: #fff;
+        padding: 20px 0;
+        text-align: center;
+        z-index: 1000;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    /* 5. Highlight & Typography */
+    .nav-links a.active, 
+    .lang-switch a.active {
+        color: #c5a059 !important;
+        font-weight: 600;
+    }
+
     .hero {
-    padding: 0 20px; /* This creates the "border" space you wanted */
-}
+        padding: 0 20px;
+    }
 
-.hero-content h2 {
-    font-size: 2rem; /* Shrunk from desktop size so it fits comfortably */
-    line-height: 1.2;
-    word-wrap: break-word; /* Ensures long words don't break the layout */
-}
+    .hero-content h2 {
+        font-size: 2rem;
+        line-height: 1.2;
+        word-wrap: break-word;
+    }
 
-.hero-content p {
-    font-size: 1rem;
-    padding: 0 10px;
-}
-.btn-book {
-    width: 100%;
-    max-width: 250px;
-    margin: 0 auto;
-}
-.about-text {
-    text-align: center;
-    padding: 40px 20px; /* Gives some side padding for small screens */
-}
+    .hero-content p {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
 
-.about-text h2 {
-    font-size: 2rem;
-    line-height: 1.3;
-}
+    .btn-book {
+        width: 100%;
+        max-width: 250px;
+        margin: 0 auto;
+    }
 
-.about-text span {
-    display: block;
-    margin-bottom: 10px;
-}
+    .about-text {
+        text-align: center;
+        padding: 30px 20px;
+    }
 
-/* Ensure the button is centered too */
-.link-standard {
-    margin: 20px auto 0;
-    display: inline-block;
-}
-}
+    .about-text h2 {
+        font-size: 2rem;
+        line-height: 1.3;
+    }
 
+    .link-standard {
+        margin: 20px auto 0;
+        display: inline-block;
+    }
+}
 /* --- 3. INDEX PAGE CONTENT --- */
 /* About Section */
 .about-intro {
-    padding: 60px 10%;
+    padding: 30px 10%;
     background-color: #fff;
 }
 
@@ -279,7 +301,7 @@ body {
 }
 /* Food Preview Grid */
 .food-preview {
-    padding: 40px 5%;
+    padding: 30px 5%;
     background-color: #f9f9f9;
 }
 
@@ -468,7 +490,55 @@ body {
 .btn-book:hover, .btn-gold:hover {
     background-color: #a68545;
 }
+@media (max-width: 768px) {
+    /* 1. Reduce the gap between Hero and the start of the content */
+    .booking-layout {
+        padding-top: 20px !important;
+    }
 
+    /* 2. Tighten space around the sidebar titles (Location & Hours) */
+    .booking-sidebar {
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+    }
+
+    .booking-sidebar h3 {
+        margin-bottom: 10px !important;
+        margin-top: 5px !important;
+    }
+
+    /* 3. Reduce space around the Opening Hours time blocks */
+    .time-block {
+        margin-bottom: 15px !important;
+        padding: 5px 0 !important;
+    }
+
+    /* 4. Ensure the flex container doesn't add extra internal spacing */
+    .container-flex {
+        gap: 20px !important; /* Space between the stacked sidebar, form, and hours */
+    }
+
+    /* 5. Tighten the sidebar 'Our Location' specific spacing */
+    .booking-sidebar.left {
+        padding-bottom: 0 !important;
+    }
+}
+@media (max-width: 768px) {
+    /* Remove the excess padding at the bottom of the hours sidebar */
+    .booking-sidebar.right {
+        padding-bottom: 0 !important;
+    }
+
+    /* Tighten the space specifically after the last time-block (Dinner) */
+    .booking-sidebar.right .time-block:last-child {
+        margin-bottom: 0 !important;
+    }
+
+    /* Reduce the padding on the entire layout container at the bottom */
+    .booking-layout {
+        padding-bottom: 30px !important;
+    }
+}
 .link-standard {
     display: inline-block;
     font-weight: 600;
@@ -496,8 +566,8 @@ body {
 .main-footer {
     background-color: #1a1a1a;
     color: #fff;
-    padding: 60px 10% 20px;
-    margin-top: 60px;
+    padding: 30px 10% 20px;
+    margin-top: 30px;
 }
 
 .footer-grid {
@@ -682,7 +752,7 @@ body {
 
 /* Image for Desserts */
 .desserts-bg {
-    background-image: url('https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=1200&q=80');
+    background-image: url('https://media.istockphoto.com/id/1346128287/photo/chocolate-fondant-cake-molten-lava-cake.webp?a=1&b=1&s=612x612&w=0&k=20&c=FFvrgxvI0RfEG8-OEb0P8mQRK5log2TEOqSsztBzxZY=');
 }
 
 /* Tablet/Mobile fix: Parallax (fixed attachment) often breaks on phones, 
@@ -730,7 +800,7 @@ body {
 
 /* The Grid System */
 .gallery-section {
-    padding: 60px 5%;
+    padding: 30px 5%;
     max-width: 1400px;
     margin: 0 auto;
 }
@@ -829,7 +899,7 @@ body {
 }
 
 .map-placeholder {
-    margin-top: 40px;
+    margin-top: 30px;
     width: 100%;
     height: 350px; /* This increases the length/height significantly */
     border: 1px solid #eee;
@@ -861,12 +931,13 @@ body {
     display: flex;
     width: 100%;
     overflow: hidden; /* Keeps it clean */
-}
+    gap: 15px;
+    }
 
 .dish-item {
     flex: 1; /* Each image takes equal space */
     height: 300px; /* Square feel on desktop */
-}
+    }
 
 .dish-item img {
     width: 100%;
@@ -885,14 +956,26 @@ body {
 @media (max-width: 768px) {
     .dish-strip {
         flex-direction: column; /* Stacks images vertically */
+        gap: 15px;
     }
     
-    .dish-item {
-        height: 250px; /* Adjust height for mobile scrolling */
+ .dish-item {
+        /* This forces EVERY item to be exactly the same height */
+        height: 250px !important; 
+        width: 100%;
+        overflow: hidden;
+        flex: none; /* Prevents flexbox from expanding the 4th item */
+    }
+
+    .dish-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* This is the secret—it crops the image to fit the box */
+        display: block;
     }
 }
 .dishes-section {
-    padding-top: 80px; /* Space above the "Our Dishes" title */
+    padding-top: 30px; /* Space above the "Our Dishes" title */
     background-color: #fff; /* Or #f9f9f9 if you want a slight contrast */
 }
 
@@ -904,7 +987,7 @@ body {
     display: flex;
     height: 600px; /* Large square feel */
     width: 100%;
-    margin-top: 80px;
+    margin-top: 30px;
 }
 
 .cta-card {
@@ -976,11 +1059,19 @@ body {
     .split-cta {
         flex-direction: column;
         height: auto;
-        margin-top: 50px;
+        margin-top: 30px;
     }
     .cta-card {
         height: 400px;
     }
+    .cta-content{
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+   .map-placeholder {
+    Margin-bottom: 0px;
+   }
+    
 }
 .legal-container {
     max-width: 800px;
@@ -1017,6 +1108,7 @@ body {
     padding-left: 20px;
 }
 /* Container for all events */
+
 .events-list {
     max-width: 1000px;
     margin: 60px auto;      /* Centered on the page */
@@ -1073,7 +1165,98 @@ body {
 .event-info {
     flex-grow: 1;
 }
+.events-hero {
+    height: 60vh; /* Takes up 60% of the screen height */
+    min-height: 400px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                      url('https://media.istockphoto.com/id/1137781483/photo/black-male-guitarist-singing-and-playing-acoustic-guitar-on-stage.webp?a=1&b=1&s=612x612&w=0&k=20&c=9X4Rz-AVaJcAw_Xh2bmkFTpd4Mf9sfQ2rn2idYuNrP8=');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
 
+.events-hero span {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.9rem;
+    color: #c5a059; /* That gold highlight color */
+    margin-bottom: 10px;
+}
+
+.events-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 8vw, 4rem); /* Responsive text size */
+    margin: 0;
+}
+@media (max-width: 1281px) {
+    /* Center the main text and headings */
+    .contact-form-box, 
+    .contact-info {
+        text-align: center;
+        padding: 20px;
+    }
+
+    /* Center the form inputs and button */
+    #contact-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #contact-form input, 
+    #contact-form textarea {
+        width: 100%;
+        max-width: 100%; /* Ensures they fill the container */
+        text-align: left; /* Keep text input left-aligned for better UX */
+    }
+
+    /* Center the icons/labels in info items */
+    .info-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    /* Center the map placeholder */
+    .map-placeholder {
+        margin: 20px auto 0;
+        width: 100%;
+    }
+
+    /* Align the 'Find Us' span */
+    .contact-info span {
+        display: block;
+        margin: 0 auto 10px;
+    }
+    /* 1. Reduce the main container top padding */
+    .contact-container {
+        padding-top: 20px !important; /* Shrunk from desktop size */
+    }
+
+    /* 2. Remove any top margin from the first box and heading */
+    .contact-form-box {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+
+    .extra-box h2 {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+        line-height: 1.2;
+    }
+
+    /* 3. Tighten the space around the support image */
+    .contact-visual {
+        margin-top: 15px !important; /* Small gap after the first title */
+        margin-bottom: 20px !important;
+    }
+}
 /* Mobile Fix: Stack elements inside the card on small screens */
 @media (max-width: 768px) {
     .event-card {
