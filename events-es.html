@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vista Restaurante | Eventos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styling.css">
+</head>
+<body>
+    <header>
+    <nav class="navbar">
+        <div class="logo">
+            <h1>VISTA RESTAURANTE</h1>
+        </div>
+        
+        <ul class="nav-links">
+           <li><a href="index-es.html">Inicio</a></li>
+            <li><a href="menu-es.html">Nuestro Menú</a></li>
+            <li><a href="bookings-es.html">Reservas</a></li>
+            <li><a href="events-es.html" class="active">Eventos</a></li>
+            <li><a href="gallery-es.html">Galería</a></li>
+            <li><a href="contact-es.html">Contacto</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+           <div class="lang-switch">
+                <a href="events.html" class="lang">EN</a> 
+                <span class="lang-sep">|</span> 
+                <a href="events-es.html" class="lang active">ES</a> 
+            </div>            
+        </div>
+    </nav>
+</header>
+
+    <section class="events-hero">
+        <span>Vive la Experiencia Vista</span>
+        <h1>Próximos Eventos</h1>
+    </section>
+
+    <section class="events-list" id="events-container">
+        <p style="text-align:center; padding: 50px;">Cargando nuestros últimos eventos...</p>
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>Vista Restaurante</h3>
+                <p>Auténtica cocina mediterránea servida con pasión y tradición en el corazón de la costa.</p>
+                <div class="legal-links">
+                    <a href="privacy-es.html">Política de Privacidad</a>
+                    <a href="terms-es.html">Términos y Condiciones</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Horario</h4>
+                <p>Lun - Jue: 13:00 - 23:00</p>
+                <p>Vie - Dom: 13:00 - 00:00</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contacto</h4>
+                <p>Calle Mayor 12, Almería, España</p>
+                <p>+34 123 456 789</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Vista Restaurante. Creado por Vision Web Design Studio.</p>
+        </div>
+    </footer>
+
+    <div id="cookie-banner" class="cookie-banner">
+        <p>Utilizamos cookies para asegurar que tenga la mejor experiencia en nuestra web. 
+            <a href="privacy-es.html">Saber más</a>
+        </p>
+        <button id="accept-cookies" class="btn-cookie">Aceptar</button>
+    </div>
+<script>
+const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR-HiZVoyJmzm3RER4DunGUXVXF_ITPZz68skz43fxrmaGaO-RaqSedlSVExQsk8uGAoqDaDyy43n_5/pub?output=csv";
+
+async function fetchEvents() {
+    try {
+        const response = await fetch(sheetURL);
+        if (!response.ok) throw new Error('Network response was not ok');
+        
+        const data = await response.text();
+        const rows = data.split(/\r?\n/).filter(row => row.trim() !== "").slice(1); 
+        
+        const container = document.getElementById('events-container');
+        container.innerHTML = ''; 
+
+        rows.forEach((row, index) => {
+            const cols = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+            
+            // Adjusted to >= 11 to be safer, while still reaching your Spanish columns
+            if (cols.length >= 11) {
+                const clean = (val) => val ? val.replace(/"/g, "").trim() : "";
+
+                const eventHTML = `
+                    <div class="event-card">
+                        <div class="event-date">
+                            <span class="day">${clean(cols[7])}</span>
+                            <span class="month">${clean(cols[8])}</span>
+                        </div>
+                        <div class="event-image">
+                            <img src="${clean(cols[13])}" alt="${clean(cols[10])}">
+                        </div>
+                        <div class="event-info">
+                            <span class="event-tag">${clean(cols[9])}</span>
+                            <h2>${clean(cols[10])}</h2>
+                            <p>${clean(cols[11])}</p>
+                            <p class="event-time">🕒 ${clean(cols[12])}</p>
+                            <a href="bookings-es.html" class="btn-gold-small">Reservar Mesa</a>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += eventHTML;
+            }
+        });
+
+        if (container.innerHTML === '') {
+            container.innerHTML = "<p style='text-align:center; padding: 50px;'>No se encontraron eventos programados para hoy.</p>";
+        }
+
+    } catch (error) {
+        console.error("Error loading events:", error);
+        document.getElementById('events-container').innerHTML = 
+            "<p style='text-align:center; padding: 50px;'>Lo sentimos, hubo un error al cargar los eventos.</p>";
+    }
+}
+
+// *** IMPORTANT: THIS LINE RUNS THE FUNCTION ***
+fetchEvents();
+
+        const banner = document.getElementById('cookie-banner');
+        const btn = document.getElementById('accept-cookies');
+        if (localStorage.getItem('cookiesAccepted') === 'true') {
+            banner.style.display = 'none';
+        }
+        btn.addEventListener('click', () => {
+            banner.style.display = 'none';
+            localStorage.setItem('cookiesAccepted', 'true');
+        });
+    </script>
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const langSwitch = document.querySelector('.lang-switch');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            langSwitch.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
