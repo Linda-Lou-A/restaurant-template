@@ -6,7 +6,7 @@ html {
 }
 body {
     margin: 0;
-    padding-top: 80;
+    padding-top: 80px;
     font-family: 'Poppins', sans-serif;
     color: #333;
 }
@@ -91,9 +91,12 @@ body {
 }
 @media (max-width: 1281px) {
     /* 1. Header Layout - Stacking the Actions */
-    .navbar {
-        padding: 10px 5%;
-        position: relative;
+   .navbar {
+        position: fixed;   /* Keep it pinned at the top */
+        height: 100px;      /* Reduced from 100px to make it slimmer */
+        padding: 0 5%;     /* Vertical padding is handled by the height now */
+        display: flex;
+        align-items: center;
     }
 
     .nav-actions {
@@ -930,7 +933,7 @@ text-align: center;
 
 .contact-container {
     /* Increased top padding from 80px to 100px to clear the back button on desktop */
-    padding: 100px 10% 80px 10%; 
+    padding: 60px 10% 80px 10%; 
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -990,10 +993,10 @@ text-align: center;
 /* --- CONTACT RESPONSIVE FIXES --- */
 
 /* Tablet & iPad Fix (768px to 1024px) */
-@media screen and (min-width: 768px) and (max-width: 1024px) {
+@media screen and (min-width: 768px) and (max-width: 1281px) {
     .contact-container {
         /* Pushes the title down further to clear the larger tablet back button */
-        padding-top: 150px; 
+        padding-top: 130px; 
     }
 }
 
@@ -1317,7 +1320,7 @@ text-align: center;
     }
     /* 1. Reduce the main container top padding */
     .contact-container {
-        padding-top: 20px !important; /* Shrunk from desktop size */
+        padding-top: 80px !important; /* Shrunk from desktop size */
     }
 
     /* 2. Remove any top margin from the first box and heading */
@@ -1518,19 +1521,20 @@ text-align: center;
 /* --- BACK TO PORTFOLIO BUTTON --- */
 /* --- BACK TO PORTFOLIO BUTTON --- */
 .portfolio-back-btn {
+    top: 95px !important; /* 70px (nav) + 15px (gap) = 85px */
+        z-index: 11000;       /* Higher than the navbar's 10000 */
     position: fixed;
-    top: 110px;     /* Just 10px below the 100px navbar */
-    left: 20px;
+    left: 10px;
     z-index: 9998;  /* Just below the navbar but above content */
     background-color: #111; 
     color: #c5a059 !important; 
-    padding: 8px 15px;
+    padding: 8px;
     text-decoration: none;
     font-size: 0.75rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
-    border-radius: 4px;
+    border-radius: 1px;
     border: 1px solid #c5a059;
     transition: all 0.3s ease;
     display: flex;
@@ -1567,9 +1571,9 @@ text-align: center;
 }
 
 /* For iPads and Tablets (768px to 1024px) */
-@media screen and (min-width: 768px) and (max-width: 1024px) {
+@media screen and (min-width: 768px) and (max-width: 1281px) {
     .portfolio-back-btn {
-        top: 90px;      /* Increased to ensure it clears tablet navbars */
+        top: 80px;      /* Increased to ensure it clears tablet navbars */
         left: 20px;
         padding: 12px 20px; 
         font-size: 1rem;    
