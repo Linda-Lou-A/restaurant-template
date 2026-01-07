@@ -1320,7 +1320,7 @@ text-align: center;
     }
     /* 1. Reduce the main container top padding */
     .contact-container {
-        padding-top: 80px !important; /* Shrunk from desktop size */
+        padding-top: 130px !important; /* Shrunk from desktop size */
     }
 
     /* 2. Remove any top margin from the first box and heading */
@@ -1521,7 +1521,7 @@ text-align: center;
 /* --- BACK TO PORTFOLIO BUTTON --- */
 /* --- BACK TO PORTFOLIO BUTTON --- */
 .portfolio-back-btn {
-    top: 95px !important; /* 70px (nav) + 15px (gap) = 85px */
+    top: 100px !important; /* 70px (nav) + 15px (gap) = 85px */
         z-index: 11000;       /* Higher than the navbar's 10000 */
     position: fixed;
     left: 10px;
@@ -1552,7 +1552,7 @@ text-align: center;
 /* --- MOBILE ADJUSTMENTS --- */
 @media screen and (max-width: 1024px) {
     .portfolio-back-btn {
-        top: 90px;      /* Slightly higher on mobile as navbars are often shorter */
+        top: 100px;      /* Slightly higher on mobile as navbars are often shorter */
         left: 10px;
         padding: 6px 10px;
         font-size: 0.65rem;
@@ -1563,10 +1563,11 @@ text-align: center;
 /* For smaller phones (clears the mobile navbar) */
 @media screen and (max-width: 767px) {
     .portfolio-back-btn {
-        top: 90px;      /* Increased from 85px to clear the header */
+        top: 100px;      /* Increased from 85px to clear the header */
         left: 10px;
         padding: 8px 12px;
         font-size: 0.7rem;
+        width: 70%;
     }
 }
 
@@ -1579,4 +1580,53 @@ text-align: center;
         font-size: 1rem;    
         border-width: 2px;  
     }
+}
+/* --- DEMO DISCLAIMER --- */
+.demo-disclaimer {
+    position: fixed;
+    top: 100px; /* Matches your desktop back button */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+    background-color: rgba(17, 17, 17, 0.9); /* Slight transparency */
+    color: #c5a059;
+    padding: 8px 20px;
+    border: 1px solid #c5a059;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap; /* Keeps it on one line */
+    pointer-events: none; /* Allows clicks to pass through if necessary */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* --- RESPONSIVE ALIGNMENT --- */
+
+/* Matching your Tablet/iPad adjustments */
+@media screen and (min-width: 768px) and (max-width: 1281px) {
+    .demo-disclaimer {
+        top: 160px; /* Matches your tablet back button top */
+        font-size: 0.7rem;
+        padding: 10px 15px;
+    }
+}
+
+/* Matching your Mobile adjustments */
+@media screen and (max-width: 767px) {
+    .demo-disclaimer {
+        top: 160px; /* Matches your mobile back button top */
+        font-size: 0.55rem; /* Smaller text to fit screens */
+        padding: 10px 10px;
+        width: 80%; /* Prevents it hitting the back button */
+        white-space: normal; /* Allows wrapping if the name is too long */
+        text-align: center;
+    }
+}
+/* Hide both when the mobile menu is active */
+.nav-active .demo-disclaimer,
+.nav-active .portfolio-back-btn {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
 }
