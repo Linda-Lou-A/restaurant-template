@@ -819,7 +819,11 @@ text-align: center;
 .desserts-bg {
     background-image: url('https://media.istockphoto.com/id/1346128287/photo/chocolate-fondant-cake-molten-lava-cake.webp?a=1&b=1&s=612x612&w=0&k=20&c=FFvrgxvI0RfEG8-OEb0P8mQRK5log2TEOqSsztBzxZY=');
 }
-
+@media (max-width: 1400px) {
+    .menu-container{
+        padding-top: 66px;
+    }
+}
 /* Tablet/Mobile fix: Parallax (fixed attachment) often breaks on phones, 
    so we turn it off for smaller screens */
 @media (max-width: 768px) {
