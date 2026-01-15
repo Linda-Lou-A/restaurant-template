@@ -1195,6 +1195,11 @@ text-align: center;
 .legal-content ul {
     padding-left: 20px;
 }
+@media (max-width: 1281px) {
+    .legal-container {
+        padding-top: 20px;
+    }
+}
 /* Container for all events */
 
 .events-list {
